@@ -2069,7 +2069,13 @@ enum bfd_architecture
 #define bfd_mach_msp14          14
 #define bfd_mach_msp15          15
 #define bfd_mach_msp16          16
+#define bfd_mach_msp20          20
 #define bfd_mach_msp21          21
+#define bfd_mach_msp22          22
+#define bfd_mach_msp23          23
+#define bfd_mach_msp24          24
+#define bfd_mach_msp241         241
+#define bfd_mach_msp26          26
 #define bfd_mach_msp31          31
 #define bfd_mach_msp32          32
 #define bfd_mach_msp33          33
@@ -2077,6 +2083,9 @@ enum bfd_architecture
 #define bfd_mach_msp42          42
 #define bfd_mach_msp43          43
 #define bfd_mach_msp44          44
+#define bfd_mach_msp46          46
+#define bfd_mach_msp47          47
+#define bfd_mach_msp54          54
   bfd_arch_xc16x,     /* Infineon's XC16X Series.               */
 #define bfd_mach_xc16x         1
 #define bfd_mach_xc16xl        2
@@ -4471,6 +4480,25 @@ This is the 5 bits of a value.  */
   BFD_RELOC_MSP430_16_BYTE,
   BFD_RELOC_MSP430_2X_PCREL,
   BFD_RELOC_MSP430_RL_PCREL,
+  BFD_RELOC_MSP430X_SRC_BYTE,
+  BFD_RELOC_MSP430X_SRC,
+  BFD_RELOC_MSP430X_DST_BYTE,
+  BFD_RELOC_MSP430X_DST,
+  BFD_RELOC_MSP430X_DST_2ND_BYTE,
+  BFD_RELOC_MSP430X_DST_2ND,
+  BFD_RELOC_MSP430X_PCREL_SRC_BYTE,
+  BFD_RELOC_MSP430X_PCREL_SRC,
+  BFD_RELOC_MSP430X_PCREL_DST_BYTE,
+  BFD_RELOC_MSP430X_PCREL_DST,
+  BFD_RELOC_MSP430X_PCREL_DST_2ND,
+  BFD_RELOC_MSP430X_PCREL_DST_2ND_BYTE,
+  BFD_RELOC_MSP430X_S_BYTE,
+  BFD_RELOC_MSP430X_S,
+  BFD_RELOC_MSP430X_D_BYTE,
+  BFD_RELOC_MSP430X_D,
+  BFD_RELOC_MSP430X_PCREL_D,
+  BFD_RELOC_MSP430X_INDXD,
+  BFD_RELOC_MSP430X_PCREL_INDXD,
 
 /* IQ2000 Relocations.  */
   BFD_RELOC_IQ2000_OFFSET_16,

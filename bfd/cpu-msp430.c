@@ -65,29 +65,56 @@ static const bfd_arch_info_type arch_info_struct[] =
   /* msp430x16x.  */
   N (16, bfd_mach_msp16, "msp:16", FALSE, & arch_info_struct[7]),
 
+  /* msp430x20x */
+  N (16, bfd_mach_msp20, "msp:20", FALSE, & arch_info_struct[8]),
+
   /* msp430x21x.  */
-  N (16, bfd_mach_msp21, "msp:21", FALSE, & arch_info_struct[8]),
+  N (16, bfd_mach_msp21, "msp:21", FALSE, & arch_info_struct[9]),
+
+  /* msp430x22x */
+  N (16, bfd_mach_msp22, "msp:22", FALSE, & arch_info_struct[10]),
+
+  /* msp430x23x0.  */
+  N (16, bfd_mach_msp23, "msp:23", FALSE, & arch_info_struct[11]),
+
+  /* msp430x24x, msp430x24x1, msp430x2410  */
+  N (16, bfd_mach_msp24, "msp:24", FALSE, & arch_info_struct[12]),
+
+  /* msp430x241x */
+  N (16, bfd_mach_msp241, "msp:241", FALSE, & arch_info_struct[13]),
+
+  /* msp430x26x */
+  N (16, bfd_mach_msp26, "msp:26", FALSE, & arch_info_struct[14]), 
 
   /* msp430x31x.  */
-  N (16, bfd_mach_msp31, "msp:31", FALSE, & arch_info_struct[9]), 
+  N (16, bfd_mach_msp31, "msp:31", FALSE, & arch_info_struct[15]), 
 
   /* msp430x32x.  */
-  N (16, bfd_mach_msp32, "msp:32", FALSE, & arch_info_struct[10]), 
+  N (16, bfd_mach_msp32, "msp:32", FALSE, & arch_info_struct[16]), 
 
   /* msp430x33x.  */
-  N (16, bfd_mach_msp33, "msp:33", FALSE, & arch_info_struct[11]),
+  N (16, bfd_mach_msp33, "msp:33", FALSE, & arch_info_struct[17]),
   
   /* msp430x41x.  */
-  N (16, bfd_mach_msp41, "msp:41", FALSE, & arch_info_struct[12]),
+  N (16, bfd_mach_msp41, "msp:41", FALSE, & arch_info_struct[18]),
 
   /* msp430x42x.  */
-  N (16, bfd_mach_msp42, "msp:42", FALSE, & arch_info_struct[13]),
+  N (16, bfd_mach_msp42, "msp:42", FALSE, & arch_info_struct[19]),
 
   /* msp430x43x.  */
-  N (16, bfd_mach_msp43, "msp:43", FALSE, & arch_info_struct[14]),
+  N (16, bfd_mach_msp43, "msp:43", FALSE, & arch_info_struct[20]),
 
   /* msp430x44x.  */
-  N (16, bfd_mach_msp43, "msp:44", FALSE, NULL)
+  N (16, bfd_mach_msp44, "msp:44", FALSE, & arch_info_struct[21]),
+ 
+  /* msp430x46xx.  */
+  N (20, bfd_mach_msp46, "msp:46", FALSE, & arch_info_struct[22]),
+
+  /* msp430x47x3, 47x4.  */
+  N (16, bfd_mach_msp47, "msp:47", FALSE, & arch_info_struct[23]),
+
+  /* msp430x54xx.  */
+  N (20, bfd_mach_msp54, "msp:54", FALSE, NULL)
 };
 
 const bfd_arch_info_type bfd_msp430_arch =

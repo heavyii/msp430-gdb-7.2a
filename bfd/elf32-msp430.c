@@ -90,7 +90,7 @@ static reloc_howto_type elf_msp430_howto_table[] =
 	 0xffff,		/* dst_mask */
 	 FALSE),		/* pcrel_offset */
 
-  /* A 16 bit absolute relocation for command address.  */
+  /* A 16 bit PC relative relocation for command address.  */
   HOWTO (R_MSP430_16_PCREL,	/* type */
 	 1,			/* rightshift */
 	 1,			/* size (0 = byte, 1 = short, 2 = long) */
@@ -120,7 +120,7 @@ static reloc_howto_type elf_msp430_howto_table[] =
 	 0xffff,		/* dst_mask */
 	 FALSE),		/* pcrel_offset */
 
-  /* A 16 bit absolute relocation for command address.  */
+  /* A 16 bit PC relative relocation, byte operations.  */
   HOWTO (R_MSP430_16_PCREL_BYTE,/* type */
 	 1,			/* rightshift */
 	 1,			/* size (0 = byte, 1 = short, 2 = long) */
@@ -163,7 +163,292 @@ static reloc_howto_type elf_msp430_howto_table[] =
 	 FALSE,			/* partial_inplace */
 	 0,			/* src_mask */
 	 0xffff,		/* dst_mask */
-	 TRUE)			/* pcrel_offset */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute src operand relocation, byte operations */
+  HOWTO (R_MSP430X_SRC_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_SRC_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute src operand relocation */
+  HOWTO (R_MSP430X_SRC,		/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_SRC",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute dst operand relocation, src is register mode, byte operations */
+  HOWTO (R_MSP430X_DST_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_DST_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute dst operand relocation, src is register mode */
+  HOWTO (R_MSP430X_DST,		/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_DST",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute dst operand relocation, byte operations */
+  HOWTO (R_MSP430X_DST_2ND_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_DST_2ND_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x absolute dst operand relocation */
+  HOWTO (R_MSP430X_DST_2ND,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_DST_2ND",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative src operand relocation, byte operations */
+  HOWTO (R_MSP430X_PCREL_SRC_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_SRC_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative src operand relocation */
+  HOWTO (R_MSP430X_PCREL_SRC,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_SRC",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative dst operand relocation, src is register mode, byte operations */
+  HOWTO (R_MSP430X_PCREL_DST_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_DST_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative dst operand relocation, src is register mode */
+  HOWTO (R_MSP430X_PCREL_DST,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_DST",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative dst operand relocation, byte operations */
+  HOWTO (R_MSP430X_PCREL_DST_2ND_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_DST_2ND_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x PC relative dst operand relocation */
+  HOWTO (R_MSP430X_PCREL_DST_2ND,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_DST_2ND",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 20 bit msp430x address instructions immediate src operand relocation */
+  HOWTO (R_MSP430X_S_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_S_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x address instructions absolute src operand relocation */
+  HOWTO (R_MSP430X_S,		/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_S",		/* name */
+	 FALSE,			/* partial_inplace */
+	 0xfffff,		/* src_mask */
+	 0,			/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x address instructions immediate dst operand relocation */
+  HOWTO (R_MSP430X_D_BYTE,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_D_BYTE",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x address instructions absolute dst operand relocation */
+  HOWTO (R_MSP430X_D,		/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_D",		/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */
+
+  /* A 20 bit msp430x address instructions absolute dst operand relocation */
+  HOWTO (R_MSP430X_PCREL_D,	/* type */
+	 0,			/* rightshift */
+	 2,			/* size (0 = byte, 1 = short, 2 = long) */
+	 20,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_D",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0,			/* src_mask */
+	 0xfffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 16 bit msp430x relocation ***  for msp430x calla 16-bit PC-relative index ***/
+  HOWTO (R_MSP430X_PCREL_INDXD,	/* type */
+	 0,			/* rightshift */
+	 1,			/* size (0 = byte, 1 = short, 2 = long) */
+	 16,			/* bitsize */
+	 TRUE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_PCREL_INDXD",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xffff,		/* src_mask */
+	 0xffff,		/* dst_mask */
+	 TRUE),			/* pcrel_offset */
+
+  /* A 16 bit msp430x relocation ***  for msp430x bra/calla 16-bit index ***/
+  HOWTO (R_MSP430X_INDXD,	/* type */
+	 0,			/* rightshift */
+	 1,			/* size (0 = byte, 1 = short, 2 = long) */
+	 16,			/* bitsize */
+	 FALSE,			/* pc_relative */
+	 0,			/* bitpos */
+	 complain_overflow_dont,/* complain_on_overflow */
+	 bfd_elf_generic_reloc,	/* special_function */
+	 "R_MSP430X_INDXD",	/* name */
+	 FALSE,			/* partial_inplace */
+	 0xffff,		/* src_mask */
+	 0xffff,		/* dst_mask */
+	 FALSE),		/* pcrel_offset */	  
 };
 
 /* Map BFD reloc types to MSP430 ELF reloc types.  */
@@ -185,7 +470,29 @@ static const struct msp430_reloc_map msp430_reloc_map[] =
     {BFD_RELOC_MSP430_16_PCREL_BYTE, R_MSP430_16_PCREL_BYTE},
     {BFD_RELOC_MSP430_16_BYTE,       R_MSP430_16_BYTE},
     {BFD_RELOC_MSP430_2X_PCREL,      R_MSP430_2X_PCREL},
-    {BFD_RELOC_MSP430_RL_PCREL,      R_MSP430_RL_PCREL}
+    {BFD_RELOC_MSP430_RL_PCREL,      R_MSP430_RL_PCREL},
+
+    {BFD_RELOC_MSP430X_SRC_BYTE,     R_MSP430X_SRC_BYTE},
+    {BFD_RELOC_MSP430X_SRC,          R_MSP430X_SRC},
+    {BFD_RELOC_MSP430X_DST_BYTE,     R_MSP430X_DST_BYTE},
+    {BFD_RELOC_MSP430X_DST,          R_MSP430X_DST},
+    {BFD_RELOC_MSP430X_DST_2ND_BYTE, R_MSP430X_DST_2ND_BYTE},
+    {BFD_RELOC_MSP430X_DST_2ND,      R_MSP430X_DST_2ND},
+
+    {BFD_RELOC_MSP430X_PCREL_SRC_BYTE,       R_MSP430X_PCREL_SRC_BYTE},
+    {BFD_RELOC_MSP430X_PCREL_SRC,            R_MSP430X_PCREL_SRC},
+    {BFD_RELOC_MSP430X_PCREL_DST_BYTE,       R_MSP430X_PCREL_DST_BYTE},
+    {BFD_RELOC_MSP430X_PCREL_DST,            R_MSP430X_PCREL_DST},
+    {BFD_RELOC_MSP430X_PCREL_DST_2ND_BYTE,   R_MSP430X_PCREL_DST_2ND_BYTE},
+    {BFD_RELOC_MSP430X_PCREL_DST_2ND,        R_MSP430X_PCREL_DST_2ND},
+
+    {BFD_RELOC_MSP430X_S_BYTE,       R_MSP430X_S_BYTE},
+    {BFD_RELOC_MSP430X_S,            R_MSP430X_S},
+    {BFD_RELOC_MSP430X_D_BYTE,       R_MSP430X_D_BYTE},
+    {BFD_RELOC_MSP430X_D,            R_MSP430X_D},
+    {BFD_RELOC_MSP430X_PCREL_D,      R_MSP430X_PCREL_D},
+    {BFD_RELOC_MSP430X_INDXD,        R_MSP430X_INDXD},
+    {BFD_RELOC_MSP430X_PCREL_INDXD,  R_MSP430X_PCREL_INDXD},
   };
 
 static reloc_howto_type *
@@ -207,10 +514,7 @@ bfd_elf32_bfd_reloc_name_lookup (bfd *abfd ATTRIBUTE_UNUSED,
 {
   unsigned int i;
 
-  for (i = 0;
-       i < (sizeof (elf_msp430_howto_table)
-	    / sizeof (elf_msp430_howto_table[0]));
-       i++)
+  for (i = 0; i < ARRAY_SIZE (elf_msp430_howto_table); i++)
     if (elf_msp430_howto_table[i].name != NULL
 	&& strcasecmp (elf_msp430_howto_table[i].name, r_name) == 0)
       return &elf_msp430_howto_table[i];
@@ -282,18 +586,44 @@ msp430_final_link_relocate (reloc_howto_type * howto, bfd * input_bfd,
 {
   bfd_reloc_status_type r = bfd_reloc_ok;
   bfd_vma x;
-  bfd_signed_vma srel;
+  bfd_signed_vma srel = 0;
 
-  switch (howto->type)
+  if (howto->type > R_MSP430_32 && howto->type < R_MSP430_max)
     {
-    case R_MSP430_10_PCREL:
       contents += rel->r_offset;
       srel = (bfd_signed_vma) relocation;
       srel += rel->r_addend;
-      srel -= rel->r_offset;
+
+      if(howto->pc_relative)
+        {
+          srel -= rel->r_offset;
+          srel -= (input_section->output_section->vma +
+	           input_section->output_offset);
+        }
+        
+      switch (howto->type)
+        {
+        case R_MSP430X_PCREL_D:     // PC relative dst operand of calla
+        case R_MSP430X_PCREL_INDXD: // 16-bit idx in mova/bra instruction PC relative (symbolic) mode operand
+          srel -= 2;                // operand located 2 bytes after opcode
+          break;
+        case R_MSP430X_PCREL_SRC:   // PC-relative 20-bit address operand
+        case R_MSP430X_PCREL_SRC_BYTE:
+        case R_MSP430X_PCREL_DST:
+        case R_MSP430X_PCREL_DST_BYTE:
+          srel -= 4;                // operand located 4 bytes after opcode
+          break;
+        case R_MSP430X_PCREL_DST_2ND:
+        case R_MSP430X_PCREL_DST_2ND_BYTE:
+          srel -= 6;                // operand located 6 bytes after opcode
+          break;
+        }
+    }
+    
+  switch (howto->type)
+    {
+    case R_MSP430_10_PCREL:
       srel -= 2;		/* Branch instructions add 2 to the PC...  */
-      srel -= (input_section->output_section->vma +
-	       input_section->output_offset);
 
       if (srel & 1)
 	return bfd_reloc_outofrange;
@@ -311,13 +641,7 @@ msp430_final_link_relocate (reloc_howto_type * howto, bfd * input_bfd,
       break;
 
     case R_MSP430_2X_PCREL:
-      contents += rel->r_offset;
-      srel = (bfd_signed_vma) relocation;
-      srel += rel->r_addend;
-      srel -= rel->r_offset;
       srel -= 2;		/* Branch instructions add 2 to the PC...  */
-      srel -= (input_section->output_section->vma +
-	       input_section->output_offset);
 
       if (srel & 1)
 	return bfd_reloc_outofrange;
@@ -341,13 +665,7 @@ msp430_final_link_relocate (reloc_howto_type * howto, bfd * input_bfd,
 
     case R_MSP430_16_PCREL:
     case R_MSP430_RL_PCREL:
-      contents += rel->r_offset;
-      srel = (bfd_signed_vma) relocation;
-      srel += rel->r_addend;
-      srel -= rel->r_offset;
       /* Only branch instructions add 2 to the PC...  */
-      srel -= (input_section->output_section->vma +
-	       input_section->output_offset);
 
       if (srel & 1)
 	return bfd_reloc_outofrange;
@@ -356,33 +674,136 @@ msp430_final_link_relocate (reloc_howto_type * howto, bfd * input_bfd,
       break;
 
     case R_MSP430_16_PCREL_BYTE:
-      contents += rel->r_offset;
-      srel = (bfd_signed_vma) relocation;
-      srel += rel->r_addend;
-      srel -= rel->r_offset;
       /* Only branch instructions add 2 to the PC...  */
-      srel -= (input_section->output_section->vma +
-	       input_section->output_offset);
 
       bfd_put_16 (input_bfd, srel & 0xffff, contents);
       break;
 
     case R_MSP430_16_BYTE:
-      contents += rel->r_offset;
-      srel = (bfd_signed_vma) relocation;
-      srel += rel->r_addend;
       bfd_put_16 (input_bfd, srel & 0xffff, contents);
       break;
 
     case R_MSP430_16:
-      contents += rel->r_offset;
-      srel = (bfd_signed_vma) relocation;
-      srel += rel->r_addend;
-
       if (srel & 1)
 	return bfd_reloc_notsupported;
 
       bfd_put_16 (input_bfd, srel & 0xffff, contents);
+      break;
+
+    case R_MSP430X_SRC:         // address operand
+    case R_MSP430X_PCREL_SRC:   // PC-relative address operand
+
+    // 20 bit reloc for msp430x 
+    // src in Non-register mode extended instructions,
+    // imm/abs in bra instruction  
+
+    // src(19:16) located at positions 10:7 of extension word
+    // src(15:0) located just after opcode
+
+      if (srel & 1)             // odd address 
+        return bfd_reloc_notsupported;
+      /* and fall trough, no break here!!! */
+    case R_MSP430X_SRC_BYTE:            // byte instructions or immediate operand
+    case R_MSP430X_PCREL_SRC_BYTE:
+      x = bfd_get_16 (input_bfd, contents);
+      /* 4 most-significant bits */
+      x = (x & 0xf87f) | ((srel >> 9) & 0x0780);        
+      bfd_put_16 (input_bfd, x, contents);
+      /* 16 least-significant bits */
+      bfd_put_16 (input_bfd, srel & 0xffff, contents + 4); 
+      break;
+
+    case R_MSP430X_DST:         // address operand
+    case R_MSP430X_PCREL_DST:
+
+    // 20 bit reloc for msp430x
+    // dst in Non-register mode extended instructions,
+    // imm/abs/20-bit idx in calla instruction
+
+    // dst(19:16) located at positions 3:0 of extension word
+    // dst(15:0) located just after opcode
+
+      if (srel & 1)             // odd address 
+        return bfd_reloc_notsupported;
+      /* and fall trough, no break here!!! */
+    case R_MSP430X_DST_BYTE:    // byte instructions or immediate operand
+    case R_MSP430X_PCREL_DST_BYTE:
+      x = bfd_get_16 (input_bfd, contents);
+      /* 4 most-significant bits */
+      x = (x & 0xfff0) | ((srel >> 16) & 0x000f);        
+      bfd_put_16 (input_bfd, x, contents);
+      /* 16 least-significant bits */
+      bfd_put_16 (input_bfd, srel & 0xffff, contents + 4); 
+      break;
+
+    case R_MSP430X_DST_2ND:     // address operand
+    case R_MSP430X_PCREL_DST_2ND:
+
+    // 20 bit reloc for msp430x
+    // dst in Non-register mode extended instructions,
+
+    // dst(19:16) located at positions 3:0 of extension word
+    // dst(15:0) located after src(15:0)
+
+      if (srel & 1)             // odd address 
+        return bfd_reloc_notsupported;
+      /* and fall trough, no break here!!! */
+    case R_MSP430X_DST_2ND_BYTE:        // byte instructions or immediate operand
+    case R_MSP430X_PCREL_DST_2ND_BYTE:
+      x = bfd_get_16 (input_bfd, contents);
+      /* 4 most-significant bits */
+      x = (x & 0xfff0) | ((srel >> 16) & 0x000f);        
+      bfd_put_16 (input_bfd, x, contents);
+      /* 16 least-significant bits */
+      bfd_put_16 (input_bfd, srel & 0xffff, contents + 6); 
+      break;
+
+    case R_MSP430X_S:                   // absolute src operand of address instructions
+    // 20 bit reloc for msp430x 
+
+    // src(19:16) located at positions 11:8 of opcode
+    // src(15:0) located just after opcode
+
+      if (srel & 1)             //odd address 
+        return bfd_reloc_notsupported;
+      /* and fall trough, no break here!!! */
+    case R_MSP430X_S_BYTE:              // immediate src operand of address instructions
+      x = bfd_get_16 (input_bfd, contents);
+      /* 4 most-significant bits */
+      x = (x & 0xf0ff) | ((srel >> 8) & 0x0f00);        
+      bfd_put_16 (input_bfd, x, contents);
+      /* 16 least-significant bits */
+      bfd_put_16 (input_bfd, srel & 0xffff, contents + 2); 
+      break;
+
+    case R_MSP430X_D:                   // absolute dst operand of address instructions
+    case R_MSP430X_PCREL_D:             // PC relative dst operand of calla
+    // 20 bit reloc for msp430x, 
+
+    // dst(19:16) located at positions 3:0 of opcode
+    // dst(15:0) located just after opcode
+
+      if (srel & 1)             //odd address 
+        return bfd_reloc_notsupported;
+      /* and fall trough, no break here!!! */
+    case R_MSP430X_D_BYTE:              //immediate dst operand of address instructions
+
+      x = bfd_get_16 (input_bfd, contents);
+      /* 4 most-significant bits */
+      x = (x & 0xfff0) | ((srel >> 16) & 0x000f);        
+      bfd_put_16 (input_bfd, x, contents);
+      /* 16 least-significant bits */
+      bfd_put_16 (input_bfd, srel & 0xffff, contents + 2); 
+      break;
+
+    case R_MSP430X_PCREL_INDXD: // 16-bit idx in mova/bra instruction PC relative (symbolic) mode operand
+
+      if (srel & 1)             //odd address 
+	return bfd_reloc_notsupported;
+    case R_MSP430X_INDXD:       // 16-bit idx in calla/mova/bra instruction  
+
+      x = srel & 0xffff;
+      bfd_put_16 (input_bfd, x, contents + 2);          //16 least-significant bits
       break;
 
     default:
@@ -560,6 +981,34 @@ bfd_elf_msp430_final_write_processing (bfd * abfd,
       val = E_MSP430_MACH_MSP430x16;
       break;
 
+    case bfd_mach_msp20:
+      val = E_MSP430_MACH_MSP430x20;
+      break;
+
+    case bfd_mach_msp21:
+      val = E_MSP430_MACH_MSP430x21;
+      break;
+
+    case bfd_mach_msp22:
+      val = E_MSP430_MACH_MSP430x22;
+      break;
+
+    case bfd_mach_msp23:
+      val = E_MSP430_MACH_MSP430x23;
+      break;
+
+    case bfd_mach_msp24:
+      val = E_MSP430_MACH_MSP430x24;
+      break;
+
+    case bfd_mach_msp241:
+      val = E_MSP430_MACH_MSP430x241;
+      break;
+
+    case bfd_mach_msp26:
+      val = E_MSP430_MACH_MSP430x26;
+      break;
+
     case bfd_mach_msp31:
       val = E_MSP430_MACH_MSP430x31;
       break;
@@ -586,6 +1035,14 @@ bfd_elf_msp430_final_write_processing (bfd * abfd,
 
     case bfd_mach_msp44:
       val = E_MSP430_MACH_MSP430x44;
+      break;
+
+    case bfd_mach_msp47:
+      val = E_MSP430_MACH_MSP430x47;
+      break;
+
+    case bfd_mach_msp54:
+      val = E_MSP430_MACH_MSP430x54;
       break;
     }
 
@@ -637,6 +1094,34 @@ elf32_msp430_object_p (bfd * abfd)
 	  e_set = bfd_mach_msp16;
 	  break;
 
+       case E_MSP430_MACH_MSP430x20:
+         e_set = bfd_mach_msp20;
+         break;
+
+       case E_MSP430_MACH_MSP430x21:
+         e_set = bfd_mach_msp21;
+         break;
+
+       case E_MSP430_MACH_MSP430x22:
+         e_set = bfd_mach_msp22;
+         break;
+
+        case E_MSP430_MACH_MSP430x23:
+	  e_set = bfd_mach_msp23;
+	  break;
+
+       case E_MSP430_MACH_MSP430x24:
+         e_set = bfd_mach_msp24;
+         break;
+
+       case E_MSP430_MACH_MSP430x241:
+         e_set = bfd_mach_msp241;
+         break;
+
+       case E_MSP430_MACH_MSP430x26:
+         e_set = bfd_mach_msp26;
+         break;
+
 	case E_MSP430_MACH_MSP430x31:
 	  e_set = bfd_mach_msp31;
 	  break;
@@ -664,6 +1149,17 @@ elf32_msp430_object_p (bfd * abfd)
 	case E_MSP430_MACH_MSP430x44:
 	  e_set = bfd_mach_msp44;
 	  break;
+ 
+ 	case E_MSP430_MACH_MSP430x46:
+ 	  e_set = bfd_mach_msp46;
+	  break;
+
+	case E_MSP430_MACH_MSP430x47:
+	  e_set = bfd_mach_msp47;
+	  break;
+
+	case E_MSP430_MACH_MSP430x54:
+	  e_set = bfd_mach_msp54;
 	}
     }
 

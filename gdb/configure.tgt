@@ -367,6 +367,17 @@ mn10300-*-*)
 	gdb_sim=../sim/mn10300/libsim.a
 	;;
 
+msp430-*-*)
+	#gdb_target=msp430
+	#gdb_multi_arch=yes
+	#target-specific object files to use
+	gdb_target_obs="msp430-tdep.o"
+	#simulator library for target
+	gdb_sim=../sim/msp430/libsim.a
+	#set to "yes" if gdbserver supports target
+	build_gdbserver=no
+	;;
+
 mt-*-*)
 	# Target: Morpho Technologies ms1 processor
 	gdb_target_obs="mt-tdep.o"

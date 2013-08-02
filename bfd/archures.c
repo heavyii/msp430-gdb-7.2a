@@ -403,7 +403,13 @@ DESCRIPTION
 .#define bfd_mach_msp14          14
 .#define bfd_mach_msp15          15
 .#define bfd_mach_msp16          16
+.#define bfd_mach_msp20          20
 .#define bfd_mach_msp21          21
+.#define bfd_mach_msp22          22
+.#define bfd_mach_msp23          23
+.#define bfd_mach_msp24          24
+.#define bfd_mach_msp241         241
+.#define bfd_mach_msp26          26
 .#define bfd_mach_msp31          31
 .#define bfd_mach_msp32          32
 .#define bfd_mach_msp33          33
@@ -411,6 +417,9 @@ DESCRIPTION
 .#define bfd_mach_msp42          42
 .#define bfd_mach_msp43          43
 .#define bfd_mach_msp44          44
+.#define bfd_mach_msp46          46
+.#define bfd_mach_msp47          47
+.#define bfd_mach_msp54          54
 .  bfd_arch_xc16x,     {* Infineon's XC16X Series.               *}
 .#define bfd_mach_xc16x         1
 .#define bfd_mach_xc16xl        2
